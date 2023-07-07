@@ -15,7 +15,7 @@ export default function Home() {
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [editingTask, setEditingTask] = useState(null);
+  const [editingTask, setEditingTask] = useState(0);
   const[isupdate,setIsUpdate]=useState(false);
 
   const addTask = (e: React.FormEvent) => {
@@ -46,8 +46,8 @@ export default function Home() {
     if (!editingTask || !title || !description || !status) return;
 
   const updatedTasks = tasks.map(task => {
-    if (task.id === editingTask) {
-      if (task.id === editingTask) {
+    
+      if (task.id == editingTask) {
         return {
           ...task,
           title,
@@ -56,8 +56,7 @@ export default function Home() {
         };
       }
       return task;
-    }
-    return task;
+    
   });
   setTasks(updatedTasks);
   
@@ -87,7 +86,7 @@ export default function Home() {
         <div className="flex mt-4 pt-2">
           <div className="flex-1  px-3 justify-center">
 
-          <h3 className="text-center italic  text-red-500 border-b-200">To Do Task</h3>
+          <h3 className="text-center mb-2 italic text-red-500 ">To Do Task</h3>
           {tasks.filter(task => task.status === 'To Do').map(task => (
             <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl ml-32">
             <h3 className="text-lg font-bold ml-8 text-center ">{task.title}</h3>
