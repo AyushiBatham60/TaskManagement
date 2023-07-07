@@ -94,12 +94,12 @@ export default function Home() {
             <p className="mb-2 mt-2">{task.description}</p>
             <p className={`text-sm text-right ${task.status === "In Progress" ? "text-green-500" : task.status === "Completed" ? "text-gray-500" : "text-red-500"}`}>Status: {task.status}</p>
             <button
-              className="bg-red-500 hover:bg-red-400 text-white font-semibold  px-2 rounded mt-2"
+              className="bg-red-500 hover:bg-red-400 text-white  px-2 rounded mt-2"
               onClick={() => deleteTask(task.id)}
             >
               Delete
             </button>
-            <button  className="bg-blue-500 hover:bg-blue-400 text-white font-semibold  px-2 rounded mt-2 ml-2" 
+            <button  className="bg-blue-500 hover:bg-blue-400 text-white px-2 rounded mt-2 ml-2" 
               onClick={() => editTask(task.id,task.title,task.description,task.status)}
             >
               Edit
@@ -110,17 +110,17 @@ export default function Home() {
 
           <h3 className="text-center mb-2 italic  text-lime-500">In Progress</h3>
           {tasks.filter(task => task.status === 'In Progress').map(task => (
-            <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl">
+           <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl ml-32">
             <h3 className="text-lg font-bold ml-8 text-center ">{task.title}</h3>
             <p className="mb-2 mt-2">{task.description}</p>
             <p className={`text-sm text-right ${task.status === "In Progress" ? "text-green-500" : task.status === "Completed" ? "text-gray-500" : "text-red-500"}`}>Status: {task.status}</p>
             <button
-              className="bg-red-500 hover:bg-red-400 text-white font-semibold  rounded mt-2"
+              className="bg-red-500 hover:bg-red-400 text-white  px-2 rounded mt-2"
               onClick={() => deleteTask(task.id)}
             >
               Delete
             </button>
-            <button  className="bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded mt-2 ml-2" 
+            <button  className="bg-blue-500 hover:bg-blue-400 text-white px-2 rounded mt-2 ml-2" 
               onClick={() => editTask(task.id,task.title,task.description,task.status)}
             >
               Edit
@@ -132,17 +132,17 @@ export default function Home() {
 
           <h3 className="text-center mb-2 italic  text-neutral-500">Completed</h3>
           {tasks.filter(task => task.status === 'Completed').map(task => (
-            <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl">
+           <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl ml-32">
             <h3 className="text-lg font-bold ml-8 text-center ">{task.title}</h3>
             <p className="mb-2 mt-2">{task.description}</p>
             <p className={`text-sm text-right ${task.status === "In Progress" ? "text-green-500" : task.status === "Completed" ? "text-gray-500" : "text-red-500"}`}>Status: {task.status}</p>
             <button
-              className="bg-red-500 hover:bg-red-400 text-white font-semibold  rounded mt-2"
+             className="bg-red-500 hover:bg-red-400 text-white  px-2 rounded mt-2"
               onClick={() => deleteTask(task.id)}
             >
               Delete
             </button>
-            <button  className="bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded mt-2 ml-2" 
+            <button  className="bg-blue-500 hover:bg-blue-400 text-white px-2 rounded mt-2 ml-2" 
               onClick={() => editTask(task.id,task.title,task.description,task.status)}
             >
               Edit
