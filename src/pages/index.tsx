@@ -17,9 +17,9 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [editingTask, setEditingTask] = useState(0);
   const[isupdate,setIsUpdate]=useState(false);
-  const[isToDo,setIsToDo]=useState(0);
-  const[isCompl,setIsCompl]=useState(0);
-  const[isProg,setIsProg]=useState(0);
+  const[countToDO,setCountToDO]=useState(0);
+  const[countCompl,setCountCompl]=useState(0);
+  const[countProg,setCountProg]=useState(0);
 
 
   const addTask = (e: React.FormEvent) => {
@@ -35,13 +35,13 @@ export default function Home() {
       status,
     };
     if(status=="To Do"){
-      setIsToDo(isToDo+1);
+      setCountToDO(countToDO+1);
     }
     else if(status=="Completed"){
-      setIsCompl(isCompl+1);
+      setCountCompl(countCompl+1);
     }
     else{
-      setIsProg(isProg+1);
+      setCountProg(countProg+1);
     }
     setTasks([...tasks, newTask]);
     setTitle('');
@@ -57,11 +57,11 @@ export default function Home() {
     console.log(taskToDelete?.status);
   if (taskToDelete) {
     if (taskToDelete.status === 'To Do') {
-      setIsToDo(isToDo - 1);
+      setCountToDO(countToDO - 1);
     } else if (taskToDelete.status === 'Completed') {
-      setIsCompl(isCompl - 1);
+      setCountCompl(countCompl - 1);
     } else if (taskToDelete.status === 'In Progress') {
-      setIsProg(isProg - 1);
+      setCountProg(countProg - 1);
     }
   }
   };
@@ -73,22 +73,22 @@ export default function Home() {
     const taskToEdited = tasks.find(task => task.id === editingTask);
   if (taskToEdited) {
     if (taskToEdited.status === 'To Do') {
-      setIsToDo(isToDo - 1);
+      setCountToDO(countToDO - 1);
     } else if (taskToEdited.status === 'Completed') {
-      setIsCompl(isCompl - 1);
+      setCountCompl(countCompl - 1);
     } else if (taskToEdited.status === 'In Progress') {
-      setIsProg(isProg - 1);
+      setCountProg(countProg - 1);
     }
   }
 
     if(status=="To Do"){
-      setIsToDo(isToDo+1);
+      setCountToDO(countToDO+1);
     }
     else if(status=="Completed"){
-      setIsCompl(isCompl+1);
+      setCountCompl(countCompl+1);
     }
     else{
-      setIsProg(isProg+1);
+      setCountProg(countProg+1);
     }
 
   const updatedTasks = tasks.map(task => {
@@ -115,6 +115,10 @@ export default function Home() {
   };
 
   const editTask = (id:number,title:string,description:string,status:string) => {
+
+    
+
+
     setEditingTask(id);
     setTitle(title);
     setDescription(description);
@@ -131,9 +135,9 @@ export default function Home() {
         </div> 
         <div className="flex mt-4 pt-2">
           <div className="flex-1  px-3 justify-center">
-            {isCompl==0&& isProg==0 && isToDo==0 && <h2 className="text-center mb-2 italic font-bold text-neutral-500">No task</h2>}
+            {countCompl==0&& countProg==0 && countToDO==0 && <h2 className="text-center mb-2 italic font-bold text-neutral-500">No task</h2>}
 
-          {isToDo>0 && <h3 className="text-center mb-2 italic text-red-500">To Do Task</h3>}
+          {countToDO>0 && <h3 className="text-center mb-2 italic text-red-500">To Do Task</h3>}
           {tasks.filter(task => task.status === 'To Do').map(task => (
             <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl ml-32">
             <h3 className="text-lg font-bold ml-8 text-center ">{task.title}</h3>
@@ -154,7 +158,7 @@ export default function Home() {
             </div>
           ))}
 
-          {isProg>0 && <h3 className="text-center mb-2 italic  text-lime-500">In Progress</h3>}
+          {countProg>0 && <h3 className="text-center mb-2 italic  text-lime-500">In Progress</h3>}
           {tasks.filter(task => task.status === 'In Progress').map(task => (
            <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl ml-32">
             <h3 className="text-lg font-bold ml-8 text-center ">{task.title}</h3>
@@ -176,7 +180,7 @@ export default function Home() {
           ))}
 
 
-          {isCompl>0 && <h3 className="text-center mb-2 italic  text-neutral-500">Completed</h3>}
+          {countCompl>0 && <h3 className="text-center mb-2 italic  text-neutral-500">Completed</h3>}
           {tasks.filter(task => task.status === 'Completed').map(task => (
            <div key={task.id} className="p-2 border border-gray-100 rounded mb-4 w-[64%] shadow-xl ml-32">
             <h3 className="text-lg font-bold ml-8 text-center ">{task.title}</h3>
